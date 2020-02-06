@@ -18,4 +18,20 @@ function merge<T extends object, U extends object>(objA: T, objB: U) {
 
 const mergedObj = merge({ name: 'Brooks' }, { age: 24 });
 
-console.log(mergedObj.name);
+console.log(mergedObj);
+
+interface Lengthy {
+  length: number;
+}
+
+function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
+  let descriptionText = 'got no value.';
+  if (element.length === 1) {
+    descriptionText = 'Got 1 element.';
+  } else if (element.length > 1) {
+    descriptionText = 'Got ' + element.length + ' elements.';
+  }
+  return [element, descriptionText];
+}
+
+console.log(countAndDescribe(['Hi there!', 'thing']));
